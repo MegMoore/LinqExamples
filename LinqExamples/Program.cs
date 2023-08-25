@@ -23,4 +23,12 @@ var results = (from i in ints
               || (i >= 700 && i < 800)
               || (i >= 900 && i < 1000) select i).Sum();
 
-Console.WriteLine($"The min is {min}, the max is {max}, and the Average is {avg} and Sum {results}.");
+var greaterAvg = from i in ints
+                 where i > ints.Average()
+                 orderby i
+                 select i;
+
+greaterAvg.ToList().ForEach(x => Console.WriteLine($"{x} "));
+Console.WriteLine();
+
+Console.Write($"The min is {min}, the max is {max}, and the Average is {avg} and Sum {results}.");
